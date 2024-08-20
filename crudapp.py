@@ -1,14 +1,7 @@
 #Libraries required
 import mysql.connector
 from mysql.connector import Error
-
-# Database configuration
-config = {
-    'host':'',
-    'user':'',
-    'password':'',
-    'database':'employees'
-}
+from config import config
 
 # Method that allow connect to MySQL Server
 def create_connection(config):
@@ -19,3 +12,9 @@ def create_connection(config):
     except Error as e:
         print(f"This error '{e}' occured")
     return connection
+
+def main():
+    connection = create_connection(config)
+
+if __name__ == "__main__":
+    main()
