@@ -10,7 +10,7 @@ def create_connection(config):
         connection = mysql.connector.connect(**config)
         print("Connection has been successful!")
     except Error as e:
-        print(f"This error '{e}' occured")
+        print(f"This error '{e}'  occured")
     return connection
 
 def main():
