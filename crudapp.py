@@ -34,7 +34,7 @@ def main():
     connection = create_connection(config)
 
     # Calling method create a new salary
-    create_salaries(connection,56463,130000,'1985-10-20','1986-10-20')
+    create_salaries(connection,999999,130000,'1985-10-20','1986-10-20')
 
     # Calling method read
     print("Read salaries upper 100000")
