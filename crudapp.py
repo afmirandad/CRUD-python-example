@@ -22,8 +22,19 @@ def read_salaries(connection):
     for salary in salaries:
         print("Salary: "+str(salary))
 
+# Method to insert a new salary registry
+def create_salaries(connection, emp_no, salary, from_date, to_date):
+    cursor = connection.cursor()
+    query = "insert into salaries(emp_no, salary, from_date, to_date) values(%s,%s,%s,%s)"
+    cursor.execute(query,(emp_no, salary, from_date, to_date))
+    connection.commit()
+    print(f"New salary for employee '{emp_no}' has been inserted.")
+
 def main():
     connection = create_connection(config)
+
+    # Calling method create a new salary
+    create_salaries(connection,56463,130000,'1985-10-20','1986-10-20')
 
     # Calling method read
     print("Read salaries upper 100000")
