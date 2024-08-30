@@ -1,53 +1,23 @@
-from pymongo import MongoClient
+from pymongo.mongo_client import MongoClient
+from bson.objectid import ObjectId
+from configmongo import config
 
-uri = "your_mongo_chain_connection"
+#Parametros de conexión a mongo Atlas
+cliente = MongoClient(config['chainconnection'])
+datadb = cliente['vulnsData']
+tabla = datadb['softwareByIP']
 
-def create_collection_and_insert_documents():
-    client = MongoClient(uri)
+data = {'nombre':'andres',
+ 'apellido':'miranda',
+ 'ciudad':'bucaramanga',
+ 'equipo':'millonarios'}
 
-    db = client['studentsDC']
+def createone():
+    newinput = tabla.insert_one(data)
 
-    collection = db['studentsDC']
+def readone():
+    newread = tabla.find_one({'_id':ObjectId('66d1dfbcef692062b07389d8')})
 
-    print("Collection 'comidas_colombianas' created successfully!")
 
-    documents = [
-        {
-            "name": "Arepa",
-            "description": "A type of food made of ground maize dough, originating from Colombia.",
-            "ingredients": ["maize", "salt", "water"],
-            "region": "Various regions in Colombia"
-        },
-        {
-            "name": "Bandeja Paisa",
-            "description": "A traditional Colombian dish from the Antioquia region.",
-            "ingredients": ["beans", "rice", "pork", "egg", "plantain", "arepa"],
-            "region": "Antioquia"
-        },
-        {
-            "name": "Sancocho",
-            "description": "A traditional Colombian soup, often made with chicken, beef, or fish.",
-            "ingredients": ["meat", "potatoes", "yuca", "corn", "plantain"],
-            "region": "Various regions in Colombia"
-        },
-        {
-            "name": "Ajiaco",
-            "description": "A traditional Colombian soup made with chicken, potatoes, and herbs.",
-            "ingredients": ["chicken", "potatoes", "corn", "guascas", "cream", "capers"],
-            "region": "Cundinamarca, Bogotá"
-        },
-        {
-            "name": "Lechona",
-            "description": "A traditional dish made with roasted pig stuffed with rice, peas, and spices.",
-            "ingredients": ["pork", "rice", "peas", "spices"],
-            "region": "Tolima"
-        },
-    ]
-
-    result = collection.insert_many(documents)
-    print(f"{len(result.inserted_ids)} documents inserted into the collection!")
-
-    client.close()
-
-if __name__ == "__main__":
-    create_collection_and_insert_documents()
+if __name__ == '__main__':
+    createone()
