@@ -4,13 +4,8 @@ from configmongo import config
 
 #Parametros de conexión a mongo Atlas
 cliente = MongoClient(config['chainconnection'])
-datadb = cliente['vulnsData']
-tabla = datadb['softwareByIP']
-
-data = {'nombre':'andres',
- 'apellido':'miranda',
- 'ciudad':'bucaramanga',
- 'equipo':'millonarios'}
+datadb = cliente[config['database']]
+tabla = datadb[config['collection']]
 
 def createone(nombre,apellido, ciudad, equipo):
     data = {'nombre':str(nombre),'apellido':str(apellido),'ciudad':str(ciudad),'equipo':str(equipo)}
