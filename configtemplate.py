@@ -1,4 +1,4 @@
-config = {
+configuration = {
     'chainconnection':'',
     'database':'',
     'collection':''
