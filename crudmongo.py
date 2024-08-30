@@ -17,7 +17,13 @@ def createone():
 
 def readone():
     newread = tabla.find_one({'_id':ObjectId('66d1dfbcef692062b07389d8')})
+    if newread:
+        newread['_id'] = str(newread['_id'])
+        print(newread['nombre'])
+    else:
+        print("No hay datos")
 
 
 if __name__ == '__main__':
     createone()
+    readone()
