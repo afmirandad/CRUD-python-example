@@ -7,13 +7,12 @@ cliente = MongoClient(config['chainconnection'])
 datadb = cliente['vulnsData']
 tabla = datadb['softwareByIP']
 
-data = {'nombre':'andres',
- 'apellido':'miranda',
- 'ciudad':'bucaramanga',
- 'equipo':'millonarios'}
-
-def createone():
+def createone(nombre,apellido,ciudad,equipo):
+    data = {'nombre':str(nombre), 'apellido':str(apellido), 'ciudad':str(ciudad), 'equipo':str(equipo)}
     newinput = tabla.insert_one(data)
+    validation = tabla.find_one({'_id':ObjectId(newinput.inserted_id)})
+    print(newinput.inserted_id)
+
 
 def readone():
     newread = tabla.find_one({'_id':ObjectId('66d1dfbcef692062b07389d8')})
@@ -33,6 +32,4 @@ def deleteone():
     readone()
 
 if __name__ == '__main__':
-    createone()
-    readone()
-    updateone()
+    idcreacion = createone("juan","gonzalez","cali","america")
