@@ -1,31 +1,34 @@
 import requests
+
+"""
 #Lista
 #Ejemplo: stopAndres = ['nombre','apellido','color','fruta','ciudad','año','edad']
-#stopAndres = ['Andres','Miranda','Azul','Fresas','Bogotá',1900,60]
-##Consultar dirección de memoria
-#print(id(stopAndres))
+stopAndres = ['Andres','Miranda','Azul','Fresas','Bogotá',1900,60]
 ##Consultar tipo de estructura de datos
-#print(type(stopAndres))
-#ciudad = "bucaramanga"
-#print(type(ciudad))
-#stopAndres[1] = 'Diaz'
-#print(stopAndres[1])
+print(type(stopAndres))
+stopAndres[1] = 'Diaz'
+print(stopAndres[1])
 
-#stopAndres.append('millonarios')
-#print(stopAndres[7])
+stopAndres.append('millonarios')
+print(stopAndres[7])
+print(stopAndres)
 
-#stopAndres.remove('millonarios')
-#print(stopAndres)
+stopAndres.remove('millonarios')
+print(stopAndres)
 
 ##Una tupla no se puede modificar!!!!
 #stopAndres1 = ('Andres','Miranda','Azul','Fresas','Bogotá',1900,60)
 #stopAndres1[1] = 'Diaz'
 
-
+"""
 #Diccionarios - JSON?
-#dictCities = {'Nombre':'Andres','Apellido':'Miranda','Color':'Azul','Fruta':'Fresas','Ciudad':'Bogotá','Año':1900,'Edad':60}
+dictCities = {'Nombre':'Andres','Apellido':'Miranda','Color':'Azul','Fruta':'Fresas','Ciudad':'Bogotá','Año':1900,'Edad':60}
 
-#print(dictCities['Nombre'])
+dictCities['Nombre'] = 'Felipe'
+dictCities['Pais'] = 'Colombia'
+print(dictCities.keys())
+print(dictCities)
+
 
 """
 url = "https://restcountries.com/v3.1/all"
